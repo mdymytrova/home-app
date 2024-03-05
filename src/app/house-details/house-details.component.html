@@ -1,0 +1,24 @@
+@if (house()) {
+  <article class="house">
+    <img
+      class="house__photo"
+      src="../assets/{{ house()?.photo }}"
+      alt="Photo of {{ house()?.name }}" />
+
+    <section class="house__description">
+      <h2 class="house__title">{{ house()?.name }}</h2>
+      <p class="house__location">{{ house()?.city }}, {{ house()?.state }}</p>
+    </section>
+
+    <section class="house__features">
+      <h2 class="house__title house__title--secondary">About this house:</h2>
+      <p class="house__feature">
+        Units available: {{ house()?.availableUnits }}
+      </p>
+      <p class="house__feature">Has wifi: {{ house()?.wifi }}</p>
+      <p class="house__feature">Has laundry: {{ house()?.laundry }}</p>
+    </section>
+  </article>
+} @else {
+  <h2>House not found</h2>
+}

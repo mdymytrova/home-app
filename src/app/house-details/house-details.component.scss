@@ -1,0 +1,46 @@
+.house {
+  &__photo {
+    height: 600px;
+    width: 50%;
+    object-fit: cover;
+    border-radius: 30px;
+    float: right;
+  }
+
+  &__title {
+    font-size: 48pt;
+    font-weight: bold;
+    margin-bottom: 15px;
+
+    &--secondary {
+      color: var(--secondary-color);
+      font-size: 24pt;
+    }
+  }
+
+  &__location {
+    font-size: 24pt;
+    margin-bottom: 15px;
+
+    &::before {
+      content: url('/assets/location-pin.svg') / '';
+    }
+  }
+
+  &__features {
+    margin-bottom: 20px;
+  }
+
+  &__feature {
+    font-size: 14pt;
+  }
+}
+
+@media (max-width: 1024px) {
+  .house {
+    &__photo {
+      width: 100%;
+      height: 400px;
+    }
+  }
+}
