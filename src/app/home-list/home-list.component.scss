@@ -4,6 +4,15 @@
   row-gap: 14px;
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 50px;
+
+  &__toolbar {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__search {
+    min-width: 392px;
+  }
 }
 
 @media (max-width: 1024px) {

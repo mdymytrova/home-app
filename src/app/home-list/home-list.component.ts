@@ -20,4 +20,8 @@ export class HomeListComponent implements OnInit {
   public ngOnInit(): void {
     this.houseList = this.houseListService.houseList;
   }
+
+  public onSearch(search: string): void {
+    this.houseListService.setSearch(search);
+  }
 }

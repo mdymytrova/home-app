@@ -1,10 +1,18 @@
 .house {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 16px;
+
   &__photo {
     height: 600px;
-    width: 50%;
     object-fit: cover;
     border-radius: 30px;
-    float: right;
+    min-width: 0;
+  }
+
+  &__content,
+  &__photo {
+    flex: 1;
   }
 
   &__title {
@@ -34,10 +42,18 @@
   &__feature {
     font-size: 14pt;
   }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 @media (max-width: 1024px) {
   .house {
+    flex-direction: column;
+
     &__photo {
       width: 100%;
       height: 400px;
