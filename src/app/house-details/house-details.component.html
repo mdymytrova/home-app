@@ -5,18 +5,42 @@
       src="../assets/{{ house()?.photo }}"
       alt="Photo of {{ house()?.name }}" />
 
-    <section class="house__description">
-      <h2 class="house__title">{{ house()?.name }}</h2>
-      <p class="house__location">{{ house()?.city }}, {{ house()?.state }}</p>
-    </section>
+    <section class="house__content">
+      <section class="house__description">
+        <h2 class="house__title">{{ house()?.name }}</h2>
+        <p class="house__location">{{ house()?.city }}, {{ house()?.state }}</p>
+      </section>
 
-    <section class="house__features">
-      <h2 class="house__title house__title--secondary">About this house:</h2>
-      <p class="house__feature">
-        Units available: {{ house()?.availableUnits }}
-      </p>
-      <p class="house__feature">Has wifi: {{ house()?.wifi }}</p>
-      <p class="house__feature">Has laundry: {{ house()?.laundry }}</p>
+      <section class="house__features">
+        <h2 class="house__title house__title--secondary">About this house:</h2>
+        <p class="house__feature">
+          Units available: {{ house()?.availableUnits }}
+        </p>
+        <p class="house__feature">Has wifi: {{ house()?.wifi }}</p>
+        <p class="house__feature">Has laundry: {{ house()?.laundry }}</p>
+      </section>
+
+      <section class="house__apply">
+        <h2 class="house__title house__title--secondary">Apply to live here</h2>
+        <form class="house__form" [formGroup]="applyForm" (submit)="onApply()">
+          <label class="house__label" for="first-name">First Name</label>
+          <input id="first-name" type="text" formControlName="firstName" />
+
+          <label class="house__label" for="last-name">Last Name</label>
+          <input id="last-name" type="text" formControlName="lastName" />
+
+          <label class="house__label" for="email">Email</label>
+          <input id="email" type="text" formControlName="email" />
+
+          <button
+            type="submit"
+            class="primary"
+            [class.disabled]="!applyForm.valid"
+            [disabled]="!applyForm.valid">
+            Apply now
+          </button>
+        </form>
+      </section>
     </section>
   </article>
 } @else {

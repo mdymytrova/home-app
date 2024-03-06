@@ -15,4 +15,13 @@ export const routes: Routes = [
       ),
     title: 'House Details',
   },
+  {
+    path: 'add-house',
+    loadChildren: () => import('./add-house.routes').then(r => r.routes),
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
 ];

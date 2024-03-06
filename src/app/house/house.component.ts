@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { HouseModel } from '../models/house.model';
@@ -9,6 +9,7 @@ import { HouseModel } from '../models/house.model';
   imports: [RouterLink],
   templateUrl: './house.component.html',
   styleUrl: './house.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HouseComponent {
   @Input() house!: HouseModel;

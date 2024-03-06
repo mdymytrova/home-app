@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: "Be Vietnam Pro", sans-serif;
+  font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 :root {
@@ -15,14 +15,28 @@ body {
 }
 
 input {
-  &[type="text"] {
-    border: solid 1px var(--primary-color);
+  transition: all 0.3s ease-in-out;
+
+  &[type='text'] {
+    border: solid 1px var(--secondary-color);
     padding: 10px;
     border-radius: 8px;
-    margin-right: 4px;
     display: inline-block;
-    width: 30%;
+    outline: none;
   }
+
+  &:focus,
+  &:focus-visible,
+  &:hover {
+    border: solid 1px var(--primary-color);
+  }
+}
+
+label {
+  color: var(--secondary-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12pt;
 }
 
 button {
@@ -41,8 +55,15 @@ button {
     border-radius: 8px;
   }
 
-  &:hover {
-    cursor: pointer;
+  &.disabled {
     background: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+
+  &:hover {
+    &:not(.disabled) {
+      cursor: pointer;
+      background: var(--secondary-color);
+    }
   }
 }
