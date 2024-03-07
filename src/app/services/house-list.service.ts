@@ -1,5 +1,8 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+
+import { Observable, map, of, switchMap, tap } from 'rxjs';
 
 import { HouseModel } from '../models/house.model';
 
@@ -7,18 +10,22 @@ import { HouseModel } from '../models/house.model';
   providedIn: 'root',
 })
 export class HouseListService {
-  protected url = 'http://localhost:3000/locations';
+  private url = 'http://localhost:3000/locations';
+  private http = inject(HttpClient);
 
-  protected houseListSignal = signal<HouseModel[]>([]);
-  protected houseDetailsSignal = signal<HouseModel | null>(null);
-  protected searchSignal = signal<string>('');
-  protected selectedHouseId = signal<number | null>(null);
+  private searchSignal = signal<string>('');
 
-  public houseList = computed(() => {
-    const search = this.searchSignal();
+  private savedHouseList = signal([] as HouseModel[]);
+  private houseList$ = toObservable(this.searchSignal).pipe(
+    switchMap((search: string) =>
+      this.getHouseList().pipe(
+        map(houses => this.getFilteredHouseList(houses, search))
+      )
+    )
+  );
+  private selectedHouseId = signal<number | null>(null);
 
-    return search ? this.getFilteredHouses(search) : this.houseListSignal();
-  });
+  public houseList = toSignal(this.houseList$, { initialValue: [] });
 
   public houseDetails = computed(() => {
     const id = this.selectedHouseId();
@@ -26,14 +33,8 @@ export class HouseListService {
     return house || null;
   });
 
-  private http = inject(HttpClient);
-
-  constructor() {
-    this.loadHouseList();
-  }
-
   public setSearch(search: string): void {
-    this.searchSignal.set(search.trim().toLowerCase());
+    this.searchSignal.set(search);
   }
 
   public loadHouseDetails(id: number): void {
@@ -44,18 +45,26 @@ export class HouseListService {
     console.log(firstName, lastName, email);
   }
 
-  private loadHouseList(): void {
-    this.http.get<HouseModel[]>(this.url).subscribe((data: HouseModel[]) => {
-      this.houseListSignal.set(data);
-    });
+  private getFilteredHouseList(
+    houses: HouseModel[],
+    search: string
+  ): HouseModel[] {
+    return !search
+      ? houses
+      : houses.filter(house => {
+          return (
+            house.city.trim().toLowerCase().includes(search) ||
+            house.state.trim().toLowerCase().includes(search) ||
+            house.name.trim().toLowerCase().includes(search)
+          );
+        });
   }
 
-  private getFilteredHouses(search: string): HouseModel[] {
-    return this.houseListSignal().filter(
-      house =>
-        house.city.trim().toLowerCase().includes(search) ||
-        house.state.trim().toLowerCase().includes(search) ||
-        house.name.trim().toLowerCase().includes(search)
-    );
+  private getHouseList(): Observable<HouseModel[]> {
+    return this.savedHouseList().length
+      ? of(this.savedHouseList())
+      : this.http
+          .get<HouseModel[]>(this.url)
+          .pipe(tap(houses => this.savedHouseList.set(houses)));
   }
 }
