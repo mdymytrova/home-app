@@ -1,20 +1,21 @@
-<section>
-  <form class="home-list__toolbar">
-    <input
-      #search
+@defer (when houseList().length) {
+  <section>
+    <app-searchbox
       class="home-list__search"
-      type="text"
-      placeholder="Filter by city" />
-    <button class="primary" type="button" (click)="onSearch(search.value)">
-      Search
-    </button>
-  </form>
-</section>
+      (searchChange)="onSearch($event)" />
+  </section>
 
-<section class="home-list">
-  @if (houseList()) {
-    @for (house of houseList(); track house.id) {
-      <app-house [house]="house"></app-house>
+  <section class="home-list">
+    @if (houseList().length) {
+      @for (house of houseList(); track house.id) {
+        <app-house [house]="house"></app-house>
+      }
+    } @else {
+      <h2 class="home-list__title">No data</h2>
     }
-  }
-</section>
+  </section>
+} @placeholder {
+  <h2 class="home-list__title">No data</h2>
+} @loading {
+  <h2 class="home-list__title">Loading...</h2>
+}
