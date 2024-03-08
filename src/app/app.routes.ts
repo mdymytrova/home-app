@@ -1,27 +1,24 @@
 import { Routes } from '@angular/router';
-import { HomeListComponent } from './home-list/home-list.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomeListComponent,
-    title: 'Homes',
+    path: 'houses',
+    loadChildren: () => import('./houses/houses.routes').then(r => r.routes),
+    title: 'Houses',
   },
   {
-    path: 'details/:id',
-    loadComponent: () =>
-      import('./house-details/house-details.component').then(
-        m => m.HouseDetailsComponent
-      ),
-    title: 'House Details',
-  },
-  {
-    path: 'add-house',
-    loadChildren: () => import('./add-house.routes').then(r => r.routes),
+    path: 'cities',
+    loadChildren: () => import('./cities/cities.routes').then(r => r.routes),
+    title: 'Cities',
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'houses',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
+    redirectTo: 'houses',
     pathMatch: 'full',
   },
 ];
