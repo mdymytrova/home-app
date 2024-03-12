@@ -3,10 +3,14 @@ $borderRaduis: 30px;
 .card {
   background: var(--accent-color);
   border-radius: $borderRaduis;
-  padding-bottom: 16px;
+  padding: 16px 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  &--img {
+    padding-top: 0;
+  }
 
   &__content {
     padding: 0 16px;
