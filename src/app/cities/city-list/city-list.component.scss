@@ -1,0 +1,28 @@
+.city-list {
+  &__toolbar {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__checkbox {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__search {
+    min-width: 392px;
+  }
+}
+
+@media (max-width: 720px) {
+  .city-list {
+    &__toolbar {
+      flex-direction: column;
+    }
+
+    &__search {
+      min-width: 100%;
+    }
+  }
+}

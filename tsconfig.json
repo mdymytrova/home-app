@@ -23,7 +23,9 @@
     "paths": {
       "@common/*": ["./src/app/common-components/*"],
       "@environment/*": ["./src/environments/*"],
-      "@houses/*": ["./src/app/houses/*"]
+      "@houses/*": ["./src/app/houses/*"],
+      "@cities/*": ["./src/app/cities/*"],
+      "@states/*": ["./src/app/states/*"]
     }
   },
   "angularCompilerOptions": {

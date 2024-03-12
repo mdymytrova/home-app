@@ -7,7 +7,6 @@ import {
   inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
 
 import { HouseModel } from '@houses/models/house.model';
 import { HouseListService } from '@houses/services/house-list.service';
@@ -18,7 +17,7 @@ import { GridViewComponent } from '@common/grid-view/grid-view.component';
 @Component({
   selector: 'app-house-list',
   standalone: true,
-  imports: [AsyncPipe, SearchboxComponent, CardComponent, GridViewComponent],
+  imports: [SearchboxComponent, CardComponent, GridViewComponent],
   templateUrl: './house-list.component.html',
   styleUrl: './house-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
