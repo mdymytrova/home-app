@@ -1,0 +1,32 @@
+<section class="card" [tabindex]="0">
+  @if (img) {
+    <img
+      class="card__img"
+      src="../assets/{{ img }}"
+      alt="Photo of {{ title }}" />
+  }
+
+  @if (title || subtitleAsRef || subtitleAsString || btnLabel) {
+    <div class="card__content">
+      @if (title) {
+        <h2 class="card__title">{{ title }}</h2>
+      }
+
+      @if (subtitleAsRef || subtitleAsString) {
+        <p class="card__subtitle">
+          @if (subtitleAsRef) {
+            <ng-container *ngTemplateOutlet="subtitleAsRef"></ng-container>
+          } @else if (subtitleAsString) {
+            {{ subtitleAsString }}
+          }
+        </p>
+      }
+
+      @if (btnLabel) {
+        <button class="primary card__btn" (click)="onBtnClick()">
+          {{ btnLabel }}
+        </button>
+      }
+    </div>
+  }
+</section>

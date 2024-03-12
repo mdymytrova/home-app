@@ -1,0 +1,12 @@
+<header class="header">
+  <img
+    class="header__logo"
+    [routerLink]="['/']"
+    src="../assets/logo.svg"
+    alt="Homes logo" />
+  <div class="header__menu">
+    <a [routerLink]="['/houses']" routerLinkActive="active-link">Houses</a>
+    <a [routerLink]="['/cities']" routerLinkActive="active-link">Cities</a>
+    <a [routerLink]="['/states']" routerLinkActive="active-link">States</a>
+  </div>
+</header>

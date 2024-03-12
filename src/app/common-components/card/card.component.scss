@@ -1,0 +1,37 @@
+$borderRaduis: 30px;
+
+.card {
+  background: var(--accent-color);
+  border-radius: $borderRaduis;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__content {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    color: var(--primary-color);
+  }
+
+  &__img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: $borderRaduis $borderRaduis 0 0;
+  }
+
+  &__subtitle {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn {
+    align-self: center;
+  }
+}
