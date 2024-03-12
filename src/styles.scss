@@ -87,3 +87,12 @@ button {
     }
   }
 }
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+
+  &.active-link {
+    color: var(--primary-color);
+  }
+}

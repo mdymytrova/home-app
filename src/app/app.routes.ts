@@ -4,12 +4,14 @@ export const routes: Routes = [
   {
     path: 'houses',
     loadChildren: () => import('./houses/houses.routes').then(r => r.routes),
-    title: 'Houses',
   },
   {
     path: 'cities',
     loadChildren: () => import('./cities/cities.routes').then(r => r.routes),
-    title: 'Cities',
+  },
+  {
+    path: 'states',
+    loadChildren: () => import('./states/states.routes').then(r => r.routes),
   },
   {
     path: '**',

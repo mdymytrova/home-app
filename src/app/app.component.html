@@ -1,12 +1,5 @@
 <main>
-  <header class="header">
-    <img
-      class="header__logo"
-      [routerLink]="['/']"
-      src="../assets/logo.svg"
-      alt="Homes logo" />
-    <a [routerLink]="['/cities']">Cities</a>
-  </header>
+  <app-header />
   <section class="content">
     <router-outlet></router-outlet>
   </section>
