@@ -1,9 +1,11 @@
 <section class="house">
   <img
     class="house__photo"
-    src="../assets/{{ house.photo }}"
+    src="../assets/{{ house.photoUrl }}"
     alt="Photo of {{ house.name }}" />
   <h2 class="house__name">{{ house.name }}</h2>
-  <p class="house__location">{{ house.city }}, {{ house.state }}</p>
-  <a class="house__link" [routerLink]="['/details', house.id]">Learn More</a>
+  <p class="house__location">{{ house.cityName }}, {{ house.stateName }}</p>
+  <a class="house__link" [routerLink]="['houses', 'details', house.id]"
+    >Learn More</a
+  >
 </section>

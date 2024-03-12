@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { HouseModel } from '../models/house.model';
+import { HouseModel } from '@houses/models/house.model';
 
 @Component({
   selector: 'app-house',
