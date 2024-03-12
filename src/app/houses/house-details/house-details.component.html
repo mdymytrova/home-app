@@ -2,13 +2,15 @@
   <article class="house">
     <img
       class="house__photo"
-      src="../assets/{{ house()?.photo }}"
+      src="../assets/{{ house()?.photoUrl }}"
       alt="Photo of {{ house()?.name }}" />
 
     <section class="house__content">
       <section class="house__description">
         <h2 class="house__title">{{ house()?.name }}</h2>
-        <p class="house__location">{{ house()?.city }}, {{ house()?.state }}</p>
+        <p class="house__location">
+          {{ house()?.cityName }}, {{ house()?.stateName }}
+        </p>
       </section>
 
       <section class="house__features">

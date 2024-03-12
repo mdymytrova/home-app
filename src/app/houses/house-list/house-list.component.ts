@@ -8,9 +8,9 @@ import {
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
-import { HouseComponent } from '../house/house.component';
-import { HouseModel } from '../models/house.model';
-import { HouseListService } from '../services/house-list.service';
+import { HouseComponent } from '@houses/house/house.component';
+import { HouseModel } from '@houses/models/house.model';
+import { HouseListService } from '@houses/services/house-list.service';
 import { SearchboxComponent } from '@common/searchbox/searchbox.component';
 
 @Component({

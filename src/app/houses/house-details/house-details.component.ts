@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, Signal, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  Signal,
+  inject,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,8 +13,8 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { HouseListService } from '../services/house-list.service';
-import { HouseModel } from '../models/house.model';
+import { HouseModel } from '@houses/models/house.model';
+import { HouseDetailsService } from '@houses/services/house-details.service';
 
 @Component({
   selector: 'app-house-details',
@@ -15,27 +22,28 @@ import { HouseModel } from '../models/house.model';
   imports: [ReactiveFormsModule],
   templateUrl: './house-details.component.html',
   styleUrl: './house-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HouseDetailsComponent implements OnInit {
   @Input() set id(id: string) {
-    this.houseListService.loadHouseDetails(Number(id));
+    this.houseDetailsService.loadHouseDetails(Number(id));
   }
 
   public house!: Signal<HouseModel | null>;
   public applyForm!: FormGroup;
 
-  private houseListService = inject(HouseListService);
+  private houseDetailsService = inject(HouseDetailsService);
   private formBuilder = inject(FormBuilder);
 
   public ngOnInit(): void {
     this.initForm();
-    this.house = this.houseListService.houseDetails;
+    this.house = this.houseDetailsService.houseDetails;
   }
 
   public onApply(): void {
     if (this.applyForm.valid) {
       const { firstName = '', lastName = '', email } = this.applyForm.value;
-      this.houseListService.submitApplication(firstName, lastName, email);
+      this.houseDetailsService.submitApplication(firstName, lastName, email);
     }
   }
 

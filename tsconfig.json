@@ -21,7 +21,9 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@common/*": ["./src/app/common-components/*"]
+      "@common/*": ["./src/app/common-components/*"],
+      "@environment/*": ["./src/environments/*"],
+      "@houses/*": ["./src/app/houses/*"]
     }
   },
   "angularCompilerOptions": {
