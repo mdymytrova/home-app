@@ -1,15 +1,17 @@
-<form class="searchbox">
-  <input
-    [formControl]="searchControl"
-    class="searchbox__input"
-    type="text"
-    placeholder="Filter by city, state or name" />
-  <button
-    class="secondary searchbox__btn"
-    type="button"
-    (click)="onClear()"
-    [class.disabled]="!searchControl.value"
-    [disabled]="!searchControl.value">
-    X
-  </button>
+<form>
+  <mat-form-field
+    class="searchbox"
+    subscriptSizing="dynamic"
+    appearance="outline">
+    <input
+      matInput
+      type="text"
+      [formControl]="searchControl"
+      [placeholder]="placeholderText" />
+    @if (searchControl.value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="onClear()">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
 </form>

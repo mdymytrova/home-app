@@ -4,9 +4,31 @@
     [routerLink]="['/']"
     src="../assets/logo.svg"
     alt="Homes logo" />
+
   <div class="header__menu">
-    <a [routerLink]="['/houses']" routerLinkActive="active-link">Houses</a>
-    <a [routerLink]="['/cities']" routerLinkActive="active-link">Cities</a>
-    <a [routerLink]="['/states']" routerLinkActive="active-link">States</a>
+    <a
+      mat-flat-button
+      [routerLink]="['/houses']"
+      routerLinkActive
+      #rla1="routerLinkActive"
+      [color]="rla1.isActive ? 'primary' : ''"
+      >Houses</a
+    >
+    <a
+      mat-flat-button
+      [routerLink]="['/cities']"
+      routerLinkActive
+      #rla2="routerLinkActive"
+      [color]="rla2.isActive ? 'primary' : ''"
+      >Cities</a
+    >
+    <a
+      mat-flat-button
+      [routerLink]="['/states']"
+      routerLinkActive
+      #rla3="routerLinkActive"
+      [color]="rla3.isActive ? 'primary' : ''"
+      >States</a
+    >
   </div>
 </header>

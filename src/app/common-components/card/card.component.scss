@@ -1,37 +1,7 @@
-$borderRaduis: 30px;
-
 .card {
-  background: var(--accent-color);
-  border-radius: $borderRaduis;
-  padding: 16px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  &--img {
-    padding-top: 0;
-  }
-
-  &__content {
-    padding: 0 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
   &__img {
     height: 250px;
     width: 100%;
     object-fit: cover;
-    border-radius: $borderRaduis $borderRaduis 0 0;
-  }
-
-  &__subtitle {
-    display: flex;
-    align-items: center;
-  }
-
-  &__btn {
-    align-self: center;
   }
 }

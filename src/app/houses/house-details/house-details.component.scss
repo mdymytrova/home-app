@@ -4,7 +4,8 @@
   gap: 16px;
 
   &__photo {
-    height: 600px;
+    max-width: 700px;
+    max-height: 600px;
     object-fit: cover;
     border-radius: 30px;
     min-width: 0;
@@ -15,38 +16,18 @@
     flex: 1;
   }
 
-  &__title {
-    font-size: 48pt;
-    font-weight: bold;
-    margin-bottom: 15px;
-
-    &--secondary {
-      color: var(--secondary-color);
-      font-size: 24pt;
-    }
-  }
-
   &__location {
-    font-size: 24pt;
-    margin-bottom: 15px;
-
-    &::before {
-      content: url('/assets/location-pin.svg') / '';
-    }
-  }
-
-  &__features {
-    margin-bottom: 20px;
-  }
-
-  &__feature {
-    font-size: 14pt;
+    display: flex;
+    align-items: center;
   }
 
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+
+    button {
+      align-self: center;
+    }
   }
 }
 
