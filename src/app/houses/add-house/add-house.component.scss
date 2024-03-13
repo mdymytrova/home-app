@@ -1,0 +1,19 @@
+.add-house {
+  max-width: 700px;
+  margin: auto;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__btn {
+    align-self: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .add-house {
+    max-width: 100%;
+  }
+}

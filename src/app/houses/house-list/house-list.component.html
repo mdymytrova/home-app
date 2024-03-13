@@ -1,5 +1,13 @@
 <section class="house-list">
-  <app-searchbox class="house-list__search" (searchChange)="onSearch($event)" />
+  <div class="house-list__toolbar">
+    <app-searchbox
+      class="house-list__search"
+      placeholderText="Filter by city, state or name"
+      (searchChange)="onSearch($event)" />
+    <button mat-raised-button color="primary" (click)="onHouseAdd()">
+      Add house
+    </button>
+  </div>
   <app-grid-view [data]="houseList()" [dataItemTemplate]="dataItemTemplate" />
 </section>
 

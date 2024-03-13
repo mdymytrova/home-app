@@ -6,6 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 import { HouseModel } from '@houses/models/house.model';
 import { HouseListService } from '@houses/services/house-list.service';
@@ -16,7 +17,12 @@ import { GridViewComponent } from '@common/grid-view/grid-view.component';
 @Component({
   selector: 'app-house-list',
   standalone: true,
-  imports: [SearchboxComponent, CardComponent, GridViewComponent],
+  imports: [
+    SearchboxComponent,
+    CardComponent,
+    GridViewComponent,
+    MatButtonModule,
+  ],
   providers: [HouseListService],
   templateUrl: './house-list.component.html',
   styleUrl: './house-list.component.scss',
@@ -38,5 +44,9 @@ export class HouseListComponent implements OnInit {
 
   public onHouseSelect(houseId: number): void {
     this.router.navigate(['houses', `${houseId}`]);
+  }
+
+  public onHouseAdd(): void {
+    this.router.navigate(['houses', 'new']);
   }
 }
