@@ -6,9 +6,7 @@ import { Observable, switchMap } from 'rxjs';
 import { HouseModel } from '@houses/models/house.model';
 import { HouseGateway } from '@houses/services/house.gateway';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class HouseDetailsService {
   private houseGateway = inject(HouseGateway);
 

@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  OnDestroy,
   OnInit,
   Signal,
   inject,
@@ -18,11 +17,12 @@ import { GridViewComponent } from '@common/grid-view/grid-view.component';
   selector: 'app-house-list',
   standalone: true,
   imports: [SearchboxComponent, CardComponent, GridViewComponent],
+  providers: [HouseListService],
   templateUrl: './house-list.component.html',
   styleUrl: './house-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HouseListComponent implements OnInit, OnDestroy {
+export class HouseListComponent implements OnInit {
   public houseList!: Signal<HouseModel[]>;
 
   private houseListService = inject(HouseListService);
@@ -38,9 +38,5 @@ export class HouseListComponent implements OnInit, OnDestroy {
 
   public onHouseSelect(houseId: number): void {
     this.router.navigate(['houses', `${houseId}`]);
-  }
-
-  public ngOnDestroy(): void {
-    this.houseListService.setSearch('');
   }
 }

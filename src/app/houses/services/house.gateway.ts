@@ -20,4 +20,8 @@ export class HouseGateway {
   public getHouse(houseId: number): Observable<HouseModel> {
     return this.http.get<HouseModel>(`${this.url}/${houseId}`);
   }
+
+  public getHousesByCity(cityId: number): Observable<HouseModel[]> {
+    return this.http.get<HouseModel[]>(`${this.url}/city/${cityId}`);
+  }
 }
