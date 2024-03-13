@@ -20,6 +20,7 @@ import { HouseDetailsService } from '@houses/services/house-details.service';
   selector: 'app-house-details',
   standalone: true,
   imports: [ReactiveFormsModule],
+  providers: [HouseDetailsService],
   templateUrl: './house-details.component.html',
   styleUrl: './house-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

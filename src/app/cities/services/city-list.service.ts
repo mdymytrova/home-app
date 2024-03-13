@@ -7,9 +7,7 @@ import { CityGateway } from '@cities/services/city.gateway';
 import { CityModel } from '@cities/models/city.model';
 import { CityFilterModel } from '@cities/models/city-filter.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CityListService {
   private cityGateway = inject(CityGateway);
   private searchSignal = signal<string>('');
@@ -35,11 +33,6 @@ export class CityListService {
 
   public setSearch(search: string): void {
     this.searchSignal.set(search);
-  }
-
-  public resetFilter(): void {
-    this.searchSignal.set('');
-    this.includeWithoutHousesSignal.set(false);
   }
 
   public setIncludeWithoutHouses(): void {

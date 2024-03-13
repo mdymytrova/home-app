@@ -17,4 +17,8 @@ export class CityGateway {
   public getCities(cityFilter: CityFilterModel): Observable<CityModel[]> {
     return this.http.post<CityModel[]>(`${this.url}/Cities`, cityFilter);
   }
+
+  public getCity(cityId: number): Observable<CityModel> {
+    return this.http.get<CityModel>(`${this.url}/${cityId}`);
+  }
 }

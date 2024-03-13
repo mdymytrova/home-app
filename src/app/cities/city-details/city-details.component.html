@@ -1,0 +1,28 @@
+<section class="city">
+  @if (city()) {
+    <section>
+      <h1 class="city__title">{{ city().name }}, {{ city().stateName }}</h1>
+      <h2 class="city__title">Available houses: {{ city().houseCount }}</h2>
+    </section>
+  }
+
+  @if (houses()) {
+    <section class="city__houses">
+      <app-grid-view [data]="houses()" [dataItemTemplate]="dataItemTemplate" />
+    </section>
+
+    <ng-template #dataItemTemplate let-house>
+      <app-card
+        [img]="house.photoUrl"
+        [title]="house.name"
+        [subtitle]="location"
+        btnLabel="View Details"
+        (btnClick)="onHouseSelect(house.id)" />
+
+      <ng-template #location>
+        <span class="house-list__location"></span>{{ house.cityName }},
+        {{ house.stateName }}
+      </ng-template>
+    </ng-template>
+  }
+</section>

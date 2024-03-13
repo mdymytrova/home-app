@@ -8,4 +8,12 @@ export const routes: Routes = [
     component: CityListComponent,
     title: 'Cities',
   },
+  {
+    path: ':id',
+    loadComponent: () =>
+      import('./city-details/city-details.component').then(
+        m => m.CityDetailsComponent
+      ),
+    title: 'City Details',
+  },
 ];

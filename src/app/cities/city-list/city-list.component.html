@@ -22,5 +22,6 @@
   <app-card
     [title]="city.name"
     subtitle="{{ city.stateName }}, {{ city.houseCount }} Houses"
-    btnLabel="View Details" />
+    [btnLabel]="city.houseCount && 'View Details'"
+    (btnClick)="onCitySelect(city.cityId)" />
 </ng-template>

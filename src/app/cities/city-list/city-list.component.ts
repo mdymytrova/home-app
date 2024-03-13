@@ -17,6 +17,7 @@ import { SearchboxComponent } from '@common/searchbox/searchbox.component';
   selector: 'app-city-list',
   standalone: true,
   imports: [SearchboxComponent, CardComponent, GridViewComponent],
+  providers: [CityListService],
   templateUrl: './city-list.component.html',
   styleUrl: './city-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,7 +30,6 @@ export class CityListComponent implements OnInit {
   private router = inject(Router);
 
   public ngOnInit(): void {
-    this.cityListService.resetFilter();
     this.cityList = this.cityListService.cityList;
     this.includeWithoutHouses = this.cityListService.includeWithoutHouses;
   }
@@ -42,7 +42,7 @@ export class CityListComponent implements OnInit {
     this.cityListService.setIncludeWithoutHouses();
   }
 
-  public onHouseSelect(houseId: number): void {
-    this.router.navigate(['houses', `${houseId}`]);
+  public onCitySelect(cityId: number): void {
+    this.router.navigate(['cities', `${cityId}`]);
   }
 }
