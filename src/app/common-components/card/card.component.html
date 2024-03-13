@@ -1,32 +1,29 @@
-<section class="card" [class.card--img]="img" [tabindex]="0">
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+
+    @if (subtitleAsRef || subtitleAsString) {
+      <mat-card-subtitle>
+        @if (subtitleAsRef) {
+          <ng-container *ngTemplateOutlet="subtitleAsRef"></ng-container>
+        } @else if (subtitleAsString) {
+          {{ subtitleAsString }}
+        }
+      </mat-card-subtitle>
+    }
+  </mat-card-header>
+
   @if (img) {
     <img
+      mat-card-image
       class="card__img"
-      src="../assets/{{ img }}"
+      [src]="img"
       alt="Photo of {{ title }}" />
   }
 
-  @if (title || subtitleAsRef || subtitleAsString || btnLabel) {
-    <div class="card__content">
-      @if (title) {
-        <h2 class="card__title">{{ title }}</h2>
-      }
-
-      @if (subtitleAsRef || subtitleAsString) {
-        <p class="card__subtitle">
-          @if (subtitleAsRef) {
-            <ng-container *ngTemplateOutlet="subtitleAsRef"></ng-container>
-          } @else if (subtitleAsString) {
-            {{ subtitleAsString }}
-          }
-        </p>
-      }
-
-      @if (btnLabel) {
-        <button class="primary card__btn" (click)="onBtnClick()">
-          {{ btnLabel }}
-        </button>
-      }
-    </div>
+  @if (btnLabel) {
+    <mat-card-actions>
+      <button mat-button (click)="onBtnClick()">{{ btnLabel }}</button>
+    </mat-card-actions>
   }
-</section>
+</mat-card>

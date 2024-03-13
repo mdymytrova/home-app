@@ -1,7 +1,7 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 
-import { Observable, switchMap } from 'rxjs';
+import { Observable, catchError, of, switchMap } from 'rxjs';
 
 import { HouseGateway } from '@houses/services/house.gateway';
 import { HouseModel } from '@houses/models/house.model';
@@ -30,10 +30,12 @@ export class CityDetailsService {
   }
 
   private getHouses(cityId: number): Observable<HouseModel[]> {
-    return this.houseGateway.getHousesByCity(cityId);
+    return this.houseGateway
+      .getHousesByCity(cityId)
+      .pipe(catchError(() => of([])));
   }
 
-  private getCity(cityId: number): Observable<CityModel> {
-    return this.cityGateway.getCity(cityId);
+  private getCity(cityId: number): Observable<CityModel | null> {
+    return this.cityGateway.getCity(cityId).pipe(catchError(() => of(null)));
   }
 }

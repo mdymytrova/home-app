@@ -7,6 +7,7 @@ import {
   inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 import { GridViewComponent } from '@common/grid-view/grid-view.component';
 import { CardComponent } from '@common/card/card.component';
@@ -17,7 +18,7 @@ import { HouseModel } from '@houses/models/house.model';
 @Component({
   selector: 'app-city-details',
   standalone: true,
-  imports: [GridViewComponent, CardComponent],
+  imports: [GridViewComponent, CardComponent, MatIconModule],
   providers: [CityDetailsService],
   templateUrl: './city-details.component.html',
   styleUrl: './city-details.component.scss',

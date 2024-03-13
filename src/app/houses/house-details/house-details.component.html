@@ -1,50 +1,95 @@
-@if (house()) {
-  <article class="house">
-    <img
-      class="house__photo"
-      src="../assets/{{ house()?.photoUrl }}"
-      alt="Photo of {{ house()?.name }}" />
+@defer {
+  @if (house()) {
+    <article class="house">
+      <img
+        class="house__photo"
+        [src]="house()?.photoUrl"
+        alt="Photo of {{ house()?.name }}" />
 
-    <section class="house__content">
-      <section class="house__description">
-        <h2 class="house__title">{{ house()?.name }}</h2>
-        <p class="house__location">
-          {{ house()?.cityName }}, {{ house()?.stateName }}
-        </p>
+      <section class="house__content">
+        <section class="house__description">
+          <h1 class="primary">{{ house()?.name }}</h1>
+          <h2 class="primary house__location">
+            <mat-icon>location_on</mat-icon>{{ house()?.cityName }},
+            {{ house()?.stateName }}
+          </h2>
+        </section>
+
+        <mat-list>
+          <h3 mat-subheader class="primary">About this house</h3>
+          <mat-list-item>
+            <mat-icon matListItemIcon>meeting_room</mat-icon>
+            <div matListItemTitle>
+              Units available: {{ house()?.availableUnits }}
+            </div>
+          </mat-list-item>
+          @if (house()?.wifi) {
+            <mat-list-item>
+              <mat-icon matListItemIcon>wifi</mat-icon>
+              <div matListItemTitle>Wi-Fi</div>
+            </mat-list-item>
+          }
+          @if (house()?.laundry) {
+            <mat-list-item>
+              <mat-icon matListItemIcon>local_laundry_service</mat-icon>
+              <div matListItemTitle>Laundry</div>
+            </mat-list-item>
+          }
+        </mat-list>
+
+        <section class="house__apply">
+          <h3 class="primary">Apply to live here</h3>
+          <form
+            class="house__form"
+            [formGroup]="applyForm"
+            (submit)="onApply()">
+            <mat-form-field>
+              <mat-label>First name</mat-label>
+              <input matInput formControlName="firstName" />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Last name</mat-label>
+              <input matInput formControlName="lastName" />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="pat@example.com"
+                formControlName="email"
+                required />
+              @if (applyForm.get('email')?.hasError('required')) {
+                <mat-error>Email is required</mat-error>
+              }
+
+              @if (applyForm.get('email')?.hasError('email')) {
+                <mat-error
+                  >Please enter correct email, e.g.
+                  "pat&#64;example.com"</mat-error
+                >
+              }
+            </mat-form-field>
+
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="!applyForm.valid"
+              type="submit">
+              Apply now
+            </button>
+          </form>
+        </section>
       </section>
-
-      <section class="house__features">
-        <h2 class="house__title house__title--secondary">About this house:</h2>
-        <p class="house__feature">
-          Units available: {{ house()?.availableUnits }}
-        </p>
-        <p class="house__feature">Has wifi: {{ house()?.wifi }}</p>
-        <p class="house__feature">Has laundry: {{ house()?.laundry }}</p>
-      </section>
-
-      <section class="house__apply">
-        <h2 class="house__title house__title--secondary">Apply to live here</h2>
-        <form class="house__form" [formGroup]="applyForm" (submit)="onApply()">
-          <label class="house__label" for="first-name">First Name</label>
-          <input id="first-name" type="text" formControlName="firstName" />
-
-          <label class="house__label" for="last-name">Last Name</label>
-          <input id="last-name" type="text" formControlName="lastName" />
-
-          <label class="house__label" for="email">Email</label>
-          <input id="email" type="text" formControlName="email" />
-
-          <button
-            type="submit"
-            class="primary"
-            [class.disabled]="!applyForm.valid"
-            [disabled]="!applyForm.valid">
-            Apply now
-          </button>
-        </form>
-      </section>
-    </section>
-  </article>
-} @else {
-  <h2>House not found</h2>
+    </article>
+  } @else {
+    <h2 class="primary">House not found</h2>
+  }
+} @placeholder {
+  <h2 class="primary">Loading...</h2>
+} @loading (minimum 0.3s) {
+  <h2 class="primary">Loading...</h2>
+} @error {
+  <h2 class="primary">House not found</h2>
 }

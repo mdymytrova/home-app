@@ -8,11 +8,11 @@
         "></ng-container>
     }
     @if (!data().length) {
-      <h2 class="grid-view__title">No data</h2>
+      <h2 class="primary">No items</h2>
     }
   } @placeholder {
-    <h2 class="grid-view__title">Loading...</h2>
+    <h2 class="primary">Loading...</h2>
   } @loading (minimum 0.3s) {
-    <h2 class="grid-view__title">Loading...</h2>
+    <h2 class="primary">Loading...</h2>
   }
 </section>

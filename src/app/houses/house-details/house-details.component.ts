@@ -12,6 +12,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 
 import { HouseModel } from '@houses/models/house.model';
 import { HouseDetailsService } from '@houses/services/house-details.service';
@@ -19,7 +24,14 @@ import { HouseDetailsService } from '@houses/services/house-details.service';
 @Component({
   selector: 'app-house-details',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    MatListModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   providers: [HouseDetailsService],
   templateUrl: './house-details.component.html',
   styleUrl: './house-details.component.scss',

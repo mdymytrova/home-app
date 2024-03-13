@@ -3,17 +3,5 @@
 }
 
 .searchbox {
-  display: flex;
-
-  &__input {
-    flex: 1;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  &__btn {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left: none;
-  }
+  width: 100%;
 }

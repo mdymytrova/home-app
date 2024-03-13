@@ -1,17 +1,21 @@
 .house-list {
-  &__search {
-    min-width: 392px;
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
   }
 
-  &__location {
-    &::before {
-      content: url('/assets/location-pin.svg') / '';
-    }
+  &__search {
+    min-width: 392px;
   }
 }
 
 @media (max-width: 720px) {
   .house-list {
+    &__toolbar {
+      flex-direction: column;
+    }
     &__search {
       min-width: 100%;
     }

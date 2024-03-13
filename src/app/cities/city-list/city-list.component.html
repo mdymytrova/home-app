@@ -4,16 +4,11 @@
       class="city-list__search"
       (searchChange)="onSearch($event)" />
 
-    <div class="city-list__checkbox">
-      <label class="city-list__label" for="checkbox"
-        >Inlcude cities without houses</label
-      >
-      <input
-        id="checkbox"
-        type="checkbox"
-        [checked]="includeWithoutHouses()"
-        (change)="onToggleWithoutHouses()" />
-    </div>
+    <mat-checkbox
+      [checked]="includeWithoutHouses()"
+      (change)="onToggleWithoutHouses()"
+      >Inlcude cities without houses</mat-checkbox
+    >
   </div>
   <app-grid-view [data]="cityList()" [dataItemTemplate]="dataItemTemplate" />
 </section>

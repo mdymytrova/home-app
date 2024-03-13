@@ -1,0 +1,82 @@
+<section class="add-house">
+  <h1 class="primary">Add house</h1>
+
+  <form class="add-house__form" [formGroup]="addForm" (submit)="onAdd()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      @if (addForm.get('name')?.hasError('required')) {
+        <mat-error>Please add name</mat-error>
+      }
+      @if (addForm.get('name')?.hasError('serverError')) {
+        <mat-error>{{
+          addForm.get('name')?.errors?.['serverError']
+        }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Photo</mat-label>
+      <input matInput formControlName="photoUrl" required />
+      @if (addForm.get('photoUrl')?.hasError('required')) {
+        <mat-error>Please add photo</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Available units</mat-label>
+      <input matInput type="number" formControlName="units" required />
+      @if (addForm.get('units')?.hasError('required')) {
+        <mat-error>Please add number of units available</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="city"
+        [matAutocomplete]="auto" />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        @for (city of filteredCities(); track city.cityId) {
+          <mat-option [value]="city">{{ city.name }}</mat-option>
+        }
+      </mat-autocomplete>
+      @if (addForm.get('city')?.hasError('required')) {
+        <mat-error>Please add or select city</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>State</mat-label>
+      <mat-select formControlName="state" required>
+        <div>
+          <input
+            type="text"
+            matInput
+            [formControl]="stateControl"
+            placeholder="Search..." />
+        </div>
+
+        @for (state of filteredStates(); track state.stateId) {
+          <mat-option [value]="state">{{ state.name }}</mat-option>
+        }
+      </mat-select>
+      @if (addForm.get('state')?.hasError('required')) {
+        <mat-error>Please select state</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-checkbox formControlName="wifi">Wi-Fi</mat-checkbox>
+    <mat-checkbox formControlName="laundry">Laundry</mat-checkbox>
+
+    <button
+      mat-raised-button
+      color="primary add-house__btn"
+      [disabled]="!addForm.valid"
+      type="submit">
+      Add house
+    </button>
+  </form>
+</section>

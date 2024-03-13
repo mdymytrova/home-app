@@ -6,6 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { CityModel } from '@cities/models/city.model';
 import { CityListService } from '@cities/services/city-list.service';
@@ -16,7 +17,12 @@ import { SearchboxComponent } from '@common/searchbox/searchbox.component';
 @Component({
   selector: 'app-city-list',
   standalone: true,
-  imports: [SearchboxComponent, CardComponent, GridViewComponent],
+  imports: [
+    SearchboxComponent,
+    CardComponent,
+    GridViewComponent,
+    MatCheckboxModule,
+  ],
   providers: [CityListService],
   templateUrl: './city-list.component.html',
   styleUrl: './city-list.component.scss',
