@@ -23,6 +23,8 @@
     "paths": {
       "@common/*": ["./src/app/common-components/*"],
       "@models/*": ["./src/app/models/*"],
+      "@enums/*": ["./src/app/enums/*"],
+      "@constants/*": ["./src/app/constants/*"],
       "@environment/*": ["./src/environments/*"],
       "@houses/*": ["./src/app/houses/*"],
       "@cities/*": ["./src/app/cities/*"],

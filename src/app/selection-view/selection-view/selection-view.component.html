@@ -1,0 +1,15 @@
+<section class="house-view">
+  <div class="house-view__toolbar">
+    <app-select
+      class="house-view__select"
+      [options]="houseViewOptions"
+      [selectedOptionId]="selectedOptionId()"
+      (optionSelect)="onViewSelect($event)" />
+
+    <button mat-raised-button color="primary" (click)="onHouseAdd()">
+      Add house
+    </button>
+  </div>
+
+  <router-outlet></router-outlet>
+</section>
