@@ -13,6 +13,9 @@ import { HouseListService } from '@houses/services/house-list.service';
 import { SearchboxComponent } from '@common/searchbox/searchbox.component';
 import { CardComponent } from '@common/card/card.component';
 import { GridViewComponent } from '@common/grid-view/grid-view.component';
+import { HouseViewOptions } from '@constants/house-view-options.const';
+import { HouseViewEnum } from '@enums/house-view.enum';
+import { HouseSearchPlaceholder } from '@constants/house-search-placeholder.const';
 
 @Component({
   selector: 'app-house-list',
@@ -29,7 +32,9 @@ import { GridViewComponent } from '@common/grid-view/grid-view.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HouseListComponent implements OnInit {
+  public placeholder = HouseSearchPlaceholder[HouseViewEnum.House];
   public houseList!: Signal<HouseModel[]>;
+  public houseViewOptions = HouseViewOptions;
 
   private houseListService = inject(HouseListService);
   private router = inject(Router);

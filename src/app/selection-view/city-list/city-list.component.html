@@ -2,6 +2,7 @@
   <div class="city-list__toolbar">
     <app-searchbox
       class="city-list__search"
+      [placeholderText]="placeholder"
       (searchChange)="onSearch($event)" />
 
     <mat-checkbox

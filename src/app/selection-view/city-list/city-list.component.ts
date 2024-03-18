@@ -13,6 +13,8 @@ import { CityListService } from '@cities/services/city-list.service';
 import { CardComponent } from '@common/card/card.component';
 import { GridViewComponent } from '@common/grid-view/grid-view.component';
 import { SearchboxComponent } from '@common/searchbox/searchbox.component';
+import { HouseSearchPlaceholder } from '@constants/house-search-placeholder.const';
+import { HouseViewEnum } from '@enums/house-view.enum';
 
 @Component({
   selector: 'app-city-list',
@@ -29,6 +31,7 @@ import { SearchboxComponent } from '@common/searchbox/searchbox.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CityListComponent implements OnInit {
+  public placeholder = HouseSearchPlaceholder[HouseViewEnum.City];
   public cityList!: Signal<CityModel[]>;
   public includeWithoutHouses!: Signal<boolean>;
 

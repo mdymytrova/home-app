@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { StateListComponent } from './state-list/state-list.component';
+import { StateListComponent } from '../home/state-list/state-list.component';
 
 export const routes: Routes = [
   {
